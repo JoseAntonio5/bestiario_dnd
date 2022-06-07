@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ monstro.nickname.nickname }}</title>
+    {% load static %}
+</head>
+<body>
+    <h1>{{ monstro.nickname.nickname }}</h1>
+
+    <h2>Detalhes:</h2>
+    <ul>
+        <li><b>Tipo:</b> {{ monstro.tipo }}</li>
+        <li><b>Nível de dificuldade:</b> {{ monstro.nivel_dificuldade }}</li>
+        <li><b>Vida mínima: </b><span id="vida_min">{{ monstro.vida_min }}</span></li>
+        <li><b>Vida máxima: </b><span id="vida_max">{{ monstro.vida_max }}</span></li>
+        <li><b>Vida:</b> <span id="display_vida"></span></li>
+    </ul>
+    <br>
+    <button id="display_vida_btn">Calcular vida</button>
+    <br>
+
+    <img src="{{ monstro.imagem_url }}" alt="Imagem monstro" style="width: 200px;">
+    <br>
+    <a href="{% url 'painel' %}">Voltar</a>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

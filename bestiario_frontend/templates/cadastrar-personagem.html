@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar personagem</title>
+</head>
+<body>
+    <h1>Cadastrar novo personagem</h1>
+
+    <form action="#" method="POST">
+        {% csrf_token %}
+        <label for="id_nickname">Nickname:</label>
+        <select name="nickname" required="" id="id_nickname">
+            <option value="" selected="">---------</option>
+            {% for criatura in criaturas %}
+                <option value="{{ criatura.id }}">{{ criatura.nickname }}</option>
+            {% endfor %}
+        </select>
+        <label for="id_nome">Nome:</label>
+        {{ form.nome }}
+        <label for="id_nivel">Nível:</label>
+        {{ form.nivel }}
+        <label for="id_armas">Armas:</label>
+        {{ form.armas }}
+        <label for="id_talento">Talento:</label>
+        {{ form.talento }}
+        <label for="id_mochila">Mochila:</label>
+        {{ form.mochila }}
+        <label for="id_classe">Classe:</label>
+        {{ form.classe }}
+        <input type="submit" value="Cadastrar">
+    </form>
+
+    <a href="{% url 'painel' %}">Voltar</a>
+</body>
+</html>

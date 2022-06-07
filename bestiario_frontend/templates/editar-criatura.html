@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar criatura</title>
+</head>
+<body>
+    <h1>Editar {{criatura.nickname}}</h1>
+
+    <form action="#" method="POST">
+        {% csrf_token %}
+        <label for="id_nickname">Nickname:</label>
+        <input type="text" name="nickname" maxlength="100" id="id_nickname" value="{{ criatura.nickname }}">
+        <br>
+        <label for="id_acoes">Acoes:</label>
+        <textarea name="acoes" cols="40" rows="10" id="id_acoes">{{ criatura.acoes}}</textarea>
+        <br>
+        <label for="id_resistencia">Resistencia:</label>
+        <input type="text" name="resistencia" maxlength="1024" id="id_resistencia" value="{{ criatura.resistencia }}">
+        <br>
+        <label for="id_magias">Magias:</label>
+        <textarea name="magias" cols="40" rows="10" id="id_magias">{{ criatura.magias }}</textarea>
+        <br>
+        <label for="id_status_combate">Status de combate:</label>
+        <input type="text" name="status_combate" maxlength="1024" id="id_status_combate" value="{{ criatura.status_combate }}">
+        <br>
+        <label for="id_alinhamento">Alinhamento:</label>
+        <input type="text" name="alinhamento" maxlength="1024" id="id_alinhamento" value="{{ criatura.alinhamento }}">
+        <br>
+        <label for="id_tamanho">Tamanho:</label>
+        <input type="text" name="tamanho" maxlength="1024" id="id_tamanho" value="{{ criatura.tamanho }}">
+        <br>
+        <label for="id_conhecimento">Conhecimento:</label>
+        <input type="text" name="conhecimento" maxlength="1024" id="id_conhecimento" value="{{ criatura.conhecimento }}">
+        <br>
+        <label for="id_atributos">Atributos:</label>
+        <textarea name="atributos" cols="40" rows="10" id="id_atributos">{{ criatura.atributos }}</textarea>
+        <br>
+        <input type="submit" value="Cadastrar">
+    </form>
+
+    <a href="{% url 'painel' %}">Voltar</a>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar monstro</title>
+</head>
+<body>
+    <h1>Cadastrar novo monstro</h1>
+
+    <form action="#" method="POST">
+        {% csrf_token %}
+        <label for="id_nickname">Nickname:</label>
+        <select name="nickname" required="" id="id_nickname">
+            <option value="" selected="">---------</option>
+            {% for criatura in criaturas %}
+                <option value="{{ criatura.id }}">{{ criatura.nickname }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="id_imagem_url">Imagem (URL):</label>
+        {{ form.imagem_url }}
+        <br>
+        <label for="id_tipo">Tipo:</label>
+        {{ form.tipo }}
+        <br>
+        <label for="id_nivel_dificuldade">Nível de dificuldade:</label>
+        {{ form.nivel_dificuldade }}
+        <br>
+        <label for="id_vida_min">Vida mínima:</label>
+        {{ form.vida_min }}
+        <br>
+        <label for="id_vida_max">Vida máxima:</label>
+        {{ form.vida_max }}
+        <br>
+
+        <input type="submit" value="Cadastrar">
+    </form>
+
+    <a href="{% url 'painel' %}">Voltar</a>
+</body>
+</html>

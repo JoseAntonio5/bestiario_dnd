@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Usuario</title>
+</head>
+<body>
+    <h1>Registar novo usuário</h1>
+
+    <form action="#" method="POST">
+        {% csrf_token %}
+        <label for="id_nome">Nome:</label>
+        {{ form.nome}}
+        <label for="id_password">Senha:</label>
+        {{ form.password }}
+        <label for="id_campanha">Campanha:</label>
+        {{ form.campanha }}
+        <label for="id_email">Email:</label>
+        {{ form.email }}
+        <input type="submit" value="Registar">
+    </form>
+
+    <p>Já tem conta? <a href="{% url 'login' %}">Clique aqui para entrar!</a></p>
+</body>
+</html>

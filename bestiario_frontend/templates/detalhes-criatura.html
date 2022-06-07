@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ criatura.nickname }}</title>
+</head>
+<body>
+    <h1>{{ criatura.nickname }}</h1>
+
+    <h2>Detalhes:</h2>
+    <ul>
+        <li><b>Ações:</b> {{ criatura.acoes }}</li>
+        <li><b>Resistência:</b> {{ criatura.resistencia }}</li>
+        <li><b>Magias:</b> {{ criatura.magias }}</li>
+        <li><b>Status de combate:</b> {{ criatura.status_combate }}</li>
+        <li><b>Alinhamento:</b> {{ criatura.alinhamento }}</li>
+        <li><b>Tamanho:</b> {{ criatura.tamanho }}</li>
+        <li><b>Conhecimento:</b> {{ criatura.conhecimento }}</li>
+        <li><b>Atributos:</b> {{ criatura.atributos }}</li>
+    </ul>
+
+    <!-- TODO: if request.user.is_superuser -->
+    <a href="/editar-criatura/{{ criatura.id }}">Editar</a>
+    <a href="/remover-criatura/{{ criatura.id }}">Remover</a>
+    <br>
+    <a href="{% url 'painel' %}">Voltar</a>
+</body>
+</html>
