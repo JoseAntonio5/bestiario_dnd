@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Usuario</title>
-</head>
-<body>
-    <h1>Registar novo usuário</h1>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registrar Usuario</title>
+        <link href="css/style.css" type="text/css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="header">
+            <div class="center">
+                <img src="images/logo.png"/>
+            </div><!--center-->
+        </div><!--header-->
+        <h1>Registar novo usuário</h1>
+        <form action="#" method="POST">
+            {% csrf_token %}
+            <label for="id_nome">Nome:</label>
+            {{ form.nome}}
+            <label for="id_password">Senha:</label>
+            {{ form.password }}
+            <label for="id_campanha">Campanha:</label>
+            {{ form.campanha }}
+            <label for="id_email">Email:</label>
+            {{ form.email }}
+            <input type="submit" value="Registar">
+        </form>
 
-    <form action="#" method="POST">
-        {% csrf_token %}
-        <label for="id_nome">Nome:</label>
-        {{ form.nome}}
-        <label for="id_password">Senha:</label>
-        {{ form.password }}
-        <label for="id_campanha">Campanha:</label>
-        {{ form.campanha }}
-        <label for="id_email">Email:</label>
-        {{ form.email }}
-        <input type="submit" value="Registar">
-    </form>
-
-    <p>Já tem conta? <a href="{% url 'login' %}">Clique aqui para entrar!</a></p>
-</body>
+        <p>Já tem conta? <a href="{% url 'login' %}">Clique aqui para entrar!</a></p>
+    </body>
 </html>
