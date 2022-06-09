@@ -19,6 +19,24 @@
         {% endfor %}
     </ul>
 
+    <div class="pagination">
+        <span class="step-links">
+            {% if criaturas.has_previous %}
+                <a href="?page=1">&laquo; Primeira</a>
+                <a href="?page={{ criaturas.previous_page_number }}">Anterior</a>
+            {% endif %}
+    
+            <span class="current">
+                Página {{ criaturas.number }} de {{ criaturas.paginator.num_pages }}.
+            </span>
+    
+            {% if criaturas.has_next %}
+                <a href="?page={{ criaturas.next_page_number }}">Próxima</a>
+                <a href="?page={{ criaturas.paginator.num_pages }}">Última &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
     <a href="{% url 'painel' %}">Voltar</a>
 </body>
 </html>

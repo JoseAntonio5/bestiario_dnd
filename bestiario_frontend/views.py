@@ -3,6 +3,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.contrib import messages
 
 # MODELS
@@ -85,7 +86,14 @@ def criarCriatura(request):
 
 def criaturasCadastradas(request):
     criaturas = Criatura.objects.all()
-    return render(request, 'criaturas-cadastradas.html', {'criaturas': criaturas})
+
+    paginator = Paginator(criaturas, 10)
+
+    page = request.GET.get('page')
+
+    criatura = paginator.get_page(page)
+
+    return render(request, 'criaturas-cadastradas.html', {'criaturas': criatura})
 
 def detalhesCriaturas(request, id):
     criatura = Criatura.objects.get(id=id)

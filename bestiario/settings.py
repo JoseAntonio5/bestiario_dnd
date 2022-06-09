@@ -40,11 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
     # 'bootstrapform',
-=======
-    #'bootstrapform',
->>>>>>> 0fa422705e89893310aeab8ac2fc19c2461d400a
     'bestiario_frontend',
 ]
 
