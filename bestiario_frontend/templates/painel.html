@@ -19,11 +19,11 @@
     </div><!--header-->
     <div>
 
-        {% if messages %}
-            {% for message in messages %}
-                <h3 style="color: red;">{{ message }}</h3>
-            {% endfor %}
-        {% endif %}
+    {% if messages %}
+        {% for message in messages %}
+            <h3 style="color: red;">{{ message }}</h3>
+        {% endfor %}
+    {% endif %}
 
     {% if request.user.is_superuser %}
     <a href="{% url 'cadastrar-criatura' %}"><button>Cadastrar criatura</button></a>

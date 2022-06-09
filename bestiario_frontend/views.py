@@ -238,8 +238,54 @@ def detalhesPersonagens(request, id):
     personagem = Personagem.objects.get(id=id)
     return render(request, 'detalhes-personagem.html', {'personagem': personagem})
 
-# def editarMonstro(request, id):
-# def editarPersonagem(request, id):
+@login_required
+def editarPersonagem(request, id):
+    criaturas = Criatura.objects.all()
+    usuarios = Usuario.objects.all()
+    try:
+        personagem = Personagem.objects.get(id=id)
+    except ObjectDoesNotExist or Exception:
+        messages.error(request, "Erro, personagem não foi encontrado.")
+        return redirect('painel')
+
+    if request.method == 'POST':
+        try:
+            personagem.nickname = request.POST['nickname']
+            personagem.nome = request.POST['nome']
+            personagem.nivel = request.POST['nivel']
+            personagem.armas = request.POST['armas']
+            personagem.talento = request.POST['talento']
+            personagem.mochila = request.POST['mochila']
+            personagem.classe = request.POST['classe']
+            personagem.save()
+            messages.success(request, "O personagem foi atualizado com sucesso")
+            return redirect('/personagens-cadastrados/' + id)
+        except Exception:
+            messages.error(request, "Erro ao editar personagem.")
+            return redirect('painel')
+
+    return render(request, 'editar-personagem.html', {'personagem': personagem, 
+                                                      'criaturas': criaturas, 
+                                                       'usuarios': usuarios})
+
+@login_required
+def removerPersonagem(request, id):
+    try:
+        personagem = Personagem.objects.get(id=id)
+    except ObjectDoesNotExist or Exception:
+        messages.error(request, "Erro, Personagem não foi encontrado.")
+        return redirect('painel')
+
+    if request.method == 'POST':
+        try:
+            personagem.delete()
+            messages.success(request, "Personagem removido com sucesso!")
+            return redirect('personagens-cadastrados')
+        except Exception:
+            messages.error(request, "Erro ao remover personagem.")
+            return redirect('error')
+
+    return render(request, 'remover-personagem.html', {'personagem': personagem})
 
 def logoutUsuario(request):
     try:

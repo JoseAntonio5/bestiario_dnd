@@ -19,6 +19,11 @@
         <li><b>Mochila:</b> {{ personagem.mochila }}</li>
         <li><b>classe:</b> {{ personagem.classe }}</li>
     </ul>
+    <br>
+
+    <a href="/editar-personagem/{{ personagem.id }}">Editar</a>
+    <a href="/remover-personagem/{{ personagem.id }}">Remover</a>
+    <br>
 
     <a href="{% url 'painel' %}">Voltar</a>
 </body>

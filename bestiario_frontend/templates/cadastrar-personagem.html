@@ -19,18 +19,25 @@
                 <option value="{{ criatura.id }}">{{ criatura.nickname }}</option>
             {% endfor %}
         </select>
+        <br>
         <label for="id_nome">Nome:</label>
         {{ form.nome }}
+        <br>
         <label for="id_nivel">Nível:</label>
         {{ form.nivel }}
+        <br>
         <label for="id_armas">Armas:</label>
         {{ form.armas }}
+        <br>
         <label for="id_talento">Talento:</label>
         {{ form.talento }}
+        <br>
         <label for="id_mochila">Mochila:</label>
         {{ form.mochila }}
+        <br>
         <label for="id_classe">Classe:</label>
         {{ form.classe }}
+        <br>
         <input type="submit" value="Cadastrar">
     </form>
 

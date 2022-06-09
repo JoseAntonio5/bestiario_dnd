@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar monstro</title>
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Editar {{ personagem.nickname.nickname }}</h1>
+
+    <form action="#" method="POST">
+        {% csrf_token %}
+        <label for="id_nickname">Nickname:</label>
+        <select name="nickname" id="id_nickname">
+            <option value="" selected="">{{ personagem.nickname.nickname }}</option>
+            {% for personagem in personagens %}
+                <option value="{{ personagem.id }}">{{ personagem.nickname }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="id_nome">Nome:</label>
+        <select name="nome" required="" id="id_nome">
+            <option value="" selected="">{{ usuario.nome }}</option>
+            {% for usuario in usuarios %}
+                <option value="{{ usuario.id }}">{{ usuario.nome }}</option>
+            {% endfor %}
+          </select>
+        <br>
+        <label for="id_nivel">Nível:</label>
+        <input type="text" name="nivel" maxlength="1024" id="id_nivel" value="{{ personagem.nivel }}">
+        <br>
+        <label for="id_armas">Armas:</label>
+        <textarea name="armas" cols="40" rows="10" id="id_armas">{{ personagem.armas }}</textarea>
+        <br>
+        <label for="id_talento">Talento:</label>
+        <input type="text" name="talento" maxlength="1024" id="id_talento" value="{{ personagem.talento }}">
+        <br>
+        <label for="id_mochila">Mochila:</label>
+        <textarea name="mochila" cols="40" rows="10" required="" id="id_mochila">{{ personagem.mochila }}</textarea>
+        <br>
+        <label for="id_classe">Classe:</label>
+        <input type="text" name="classe" maxlength="1024" id="id_classe" value="{{ personagem.classe }}">
+        <br>
+        <input type="submit" value="Editar">
+    </form>
+
+    <a href="{% url 'painel' %}">Voltar</a>
+</body>
+</html>
