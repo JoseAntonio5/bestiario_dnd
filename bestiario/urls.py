@@ -34,5 +34,7 @@ urlpatterns = [
     path('personagens-cadastrados/<id>/', views.detalhesPersonagens, name='detalhes-personagens'),
     path('editar-criatura/<id>/', views.editarCriatura, name='editar-criatura'),
     path('remover-criatura/<id>', views.removerCriatura, name='remover-criatura'),
+    path('editar-monstro/<id>/', views.editarMonstro, name='editar-monstro'),
+    path('remover-monstro/<id>', views.removerMonstro, name='remover-monstro'),
     path('logout/', views.logoutUsuario, name='logout'),
 ]
