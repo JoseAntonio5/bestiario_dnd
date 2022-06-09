@@ -41,6 +41,7 @@ def loginBestiario(request):
             password = form.cleaned_data.get('password')
 
             usuario = Usuario.objects.get(nome=username)
+            request.session['id_usuario'] = usuario.id
             user = authenticate(request, username=username, password=password)
 
             if user is not None:
@@ -96,6 +97,7 @@ def criaturasCadastradas(request):
     return render(request, 'criaturas-cadastradas.html', {'criaturas': criatura})
 
 def detalhesCriaturas(request, id):
+    #TODO: Try...except...
     criatura = Criatura.objects.get(id=id)
     return render(request, 'detalhes-criatura.html', {'criatura': criatura})
 

@@ -21,8 +21,10 @@
     </ul>
     <br>
 
-    <a href="/editar-personagem/{{ personagem.id }}">Editar</a>
-    <a href="/remover-personagem/{{ personagem.id }}">Remover</a>
+    {% if request.user.is_superuser %}
+        <a href="/editar-personagem/{{ personagem.id }}">Editar</a>
+        <a href="/remover-personagem/{{ personagem.id }}">Remover</a>
+    {% endif %}
     <br>
 
     <a href="{% url 'painel' %}">Voltar</a>
