@@ -18,6 +18,24 @@ html,body{
     padding: 0 2%;
 }
 
+.header h3{
+    font-weight: normal;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    margin-left: 85% ;
+    margin-top: -180px;
+    margin-right: 20px ;
+    margin-bottom: 10px;
+}
+
+.header button{
+    width: 80px;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 95%;
+}
+
 .header{
     min-width: 1200px;
     width: 100%;
@@ -36,6 +54,12 @@ html,body{
     height: 806px;
     background-size:cover;
 }
+
+label#id_username {
+    background-color: DodgerBlue;
+  }
+  
+
 
 .form{
     position: absolute;
@@ -108,22 +132,39 @@ html,body{
     border-bottom:5px solid #4A5097 ;
 }
 
-.input-container input[type=password]{
-    margin-top: 5px;
-    margin-bottom: 5px;
-    width: 350px;
-    height: 40px;
-    font-size: 20px;
-    padding: 0px 20px;
-    text-decoration: none;
-    border: 1px solid #ccc;
+.formlogin input[type=password]{
+    padding-top:calc(.375rem + 1px);
+    padding-bottom:calc(.375rem + 1px);
+    margin-bottom:0;
+    font-size:inherit;
+    line-height:1.5
 }
 
-.input-container label{
+.formlogin label{
     padding-left:10px ;
     font-size: 25px;
     color: #3C4858;
     text-align: left;
     font-weight: bold;
     width: 100%;
+}
+
+.formlogin label{
+    padding-top:calc(.375rem + 1px);
+    padding-bottom:calc(.375rem + 1px);
+    margin-bottom:0;
+    font-size:inherit;
+    line-height:1.5;
+    padding-top:calc(.5rem + 1px);
+    padding-bottom:calc(.5rem + 1px);
+    font-size:1.25rem;
+    line-height:1.5
+}
+
+.formlogin input[type=text]{
+    padding-top:calc(.375rem + 1px);
+    padding-bottom:calc(.375rem + 1px);
+    margin-bottom:0;
+    font-size:inherit;
+    line-height:1.5
 }
