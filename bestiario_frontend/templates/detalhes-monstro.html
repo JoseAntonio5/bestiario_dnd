@@ -25,6 +25,13 @@
 
     <img src="{{ monstro.imagem_url }}" alt="Imagem monstro" style="width: 200px;">
     <br>
+
+    {% if request.user.is_superuser %}
+        <a href="/editar-monstro/{{ monstro.id }}">Editar</a>
+        <a href="/remover-monstro/{{ monstro.id }}">Remover</a>
+    {% endif %}
+    <br>
+
     <a href="{% url 'painel' %}">Voltar</a>
     <script src="{% static 'script.js' %}"></script>
 </body>

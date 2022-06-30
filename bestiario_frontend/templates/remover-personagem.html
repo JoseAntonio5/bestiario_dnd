@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remover {{ personagem.nickname.nickname }}</title>
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Remover personagem</h1>
+    <h2>Tem certeza que deseja remover {{ personagem.nickname.nickname }}?</h2>
+
+    <form action="#" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Excluir"><br>
+        <button><a href="{% url 'painel' %}">Cancelar</a></button>
+    </form>
+</body>
+</html>

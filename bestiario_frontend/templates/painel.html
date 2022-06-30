@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}">
     <script src="{% static 'js/bootstrap.min.js' %}"></script>    
 </head>
+<<<<<<< HEAD
 <body class="painel">
     <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;height: 100%;">
         <a href="{% url 'painel' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -76,6 +77,34 @@
             </li>
         </ul>
         <hr>
+=======
+<body>
+        <h3>Olá, {{ usuario.nome }}</h3>
+        {% if user.is_authenticated %}
+            <a type ="exit"  href="{% url 'logout' %}"><button>Sair</button></a>
+        {% else %}
+            <a type = "login" href="{% url 'login' %}">
+            <button>Login</button></a>
+        {% endif %}       
+    </div><!--header-->
+    <div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <h3 style="color: red;">{{ message }}</h3>
+        {% endfor %}
+    {% endif %}
+
+    {% if request.user.is_superuser %}
+    <a href="{% url 'cadastrar-criatura' %}"><button>Cadastrar criatura</button></a>
+    <a href="{% url 'cadastrar-monstro' %}"><button>Cadastrar monstro</button></a>
+    <a href="{% url 'cadastrar-personagem' %}"><button>Cadastrar personagem</button></a>
+    {% endif %}
+    <br>
+    <a href="{% url 'criaturas-cadastradas' %}"><button>Criaturas cadastradas</button></a>
+    <a href="{% url 'monstros-cadastrados' %}"><button>Monstros cadastrados</button></a>
+    <a href="{% url 'personagens-cadastrados' %}"><button>Personagens cadastrados</button></a>
+>>>>>>> 63b27754e9d0e631015823281da42477661902f3
     </div>
 </body>
 </html>

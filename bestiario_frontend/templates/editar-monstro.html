@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar monstro</title>
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Editar {{ monstro.nickname.nickname }}</h1>
+
+    <form action="#" method="POST">
+        {% csrf_token %}
+        <label for="id_nickname">Nickname:</label>
+        <select name="nickname" id="id_nickname">
+            <option value="" selected="">{{ monstro.nickname.nickname }}</option>
+            {% for criatura in criaturas %}
+                <option value="{{ criatura.id }}">{{ criatura.nickname }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="id_imagem_url">Imagem (URL):</label>
+        <textarea name="imagem_url" cols="40" rows="10" maxlength="2048" id="id_imagem_url">{{ monstro.imagem_url }}</textarea>
+        <br>
+        <label for="id_tipo">Tipo:</label>
+        <input type="text" name="tipo" maxlength="256" id="id_tipo" value="{{ monstro.tipo }}">
+        <br>
+        <label for="id_nivel_dificuldade">Nível de dificuldade:</label>
+        <input type="text" name="nivel_dificuldade" maxlength="256" id="id_nivel_dificuldade" value="{{ monstro.nivel_dificuldade }}">
+        <br>
+        <label for="id_vida_min">Vida mínima:</label>
+        <input type="number" name="vida_min" id="id_vida_min" value="{{ monstro.vida_min }}">
+        <br>
+        <label for="id_vida_max">Vida máxima:</label>
+        <input type="number" name="vida_max" id="id_vida_max" value="{{ monstro.vida_max }}">
+        <br>
+        <input type="submit" value="Editar">
+    </form>
+
+    <a href="{% url 'painel' %}">Voltar</a>
+</body>
+</html>
