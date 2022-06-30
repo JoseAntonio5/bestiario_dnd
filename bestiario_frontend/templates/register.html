@@ -23,7 +23,7 @@
                                     <h1 class="fw-bold mb-2 text-uppercase">Registar novo usuário</h1>
                                     <form action="#" method="POST">
                                         {% csrf_token %}
-                                        <label class ="id_nome" for="id_nome">Nome:</label>
+                                        <label for="id_nome">Nome:</label>
                                         {{ form.nome}}
                                         <label for="id_password">Senha:</label>
                                         {{ form.password }}
@@ -31,7 +31,7 @@
                                         {{ form.campanha }}
                                         <label for="id_email">Email:</label>
                                         {{ form.email }}
-                                        <input type="submit" value="Registar">
+                                        <input class="btn btn-outline-light btn-lg px-5" style="color: black" type="submit" value="Registar">
                                     </form>
                                     <p>Já tem conta? <a href="{% url 'login' %}">Clique aqui para entrar!</a></p>
                                 </div>
