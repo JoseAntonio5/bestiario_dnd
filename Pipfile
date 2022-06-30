@@ -7,6 +7,7 @@ name = "pypi"
 django = "*"
 python-decouple = "*"
 bs4 = "*"
+decouple = "*"
 
 [dev-packages]
 

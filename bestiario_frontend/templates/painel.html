@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}">
     <script src="{% static 'js/bootstrap.min.js' %}"></script>    
 </head>
-<<<<<<< HEAD
 <body class="painel">
     <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;height: 100%;">
         <a href="{% url 'painel' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -21,90 +20,61 @@
         <ul class="nav nav-pills flex-column mb-auto">
             <li>
                 <a href="#" class="nav-link text-white" style = "margin-bottom:-10px;">
+                    {% if user.is_authenticated %}
                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
                     <h3 style = "margin-top: -60px;">Olá, {{ usuario.nome }}</h3>
-                    {% if user.is_authenticated %}
                     <a href="{% url 'logout' %}" class="nav-link text-white" style = "margin-top: 10px;">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
                         Sair
-                    </a>
-                    {% else %}
-                    <a href="{% url 'login' %}" class="nav-link text-white" style = "margin-top: 10px;">
+                </a>
+                <br>
+                <li>
+                    <a href="{% url 'cadastrar-criatura' %}" class="nav-link text-white" style = "margin-top: 10px;">
                         <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-                        Login
+                        Cadastrar criatura
                     </a>
-                    <button>Login</button></a>
-                    {% endif %}
-                </a>
-            </li>
-            <br>
-            <li>
-                <a href="{% url 'cadastrar-criatura' %}" class="nav-link text-white" style = "margin-top: 10px;">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-                    Cadastrar criatura
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'cadastrar-monstro' %}" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                    Cadastrar monstro
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'cadastrar-personagem' %}" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-                    Cadastrar personagem
-                </a>
-            </li>
-            <br>
-            <li>
-                <a href="{% url 'criaturas-cadastradas' %}" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-                    Criaturas cadastradas
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'monstros-cadastrados' %}" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-                    Monstros cadastrados
-                </a>
-            </li>
-            <li>
-                <a href="{% url 'personagens-cadastrados' %}" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-                    Personagens cadastrados
-                </a>
-            </li>
-        </ul>
+                </li>
+                <li>
+                    <a href="{% url 'cadastrar-monstro' %}" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                        Cadastrar monstro
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'cadastrar-personagem' %}" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                        Cadastrar personagem
+                    </a>
+                </li>
+                <br>
+                <li>
+                    <a href="{% url 'criaturas-cadastradas' %}" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                        Criaturas cadastradas
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'monstros-cadastrados' %}" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                        Monstros cadastrados
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'personagens-cadastrados' %}" class="nav-link text-white">
+                        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                        Personagens cadastrados
+                    </a>
+                </li>
+            </ul>
         <hr>
-=======
-<body>
-        <h3>Olá, {{ usuario.nome }}</h3>
-        {% if user.is_authenticated %}
-            <a type ="exit"  href="{% url 'logout' %}"><button>Sair</button></a>
-        {% else %}
-            <a type = "login" href="{% url 'login' %}">
-            <button>Login</button></a>
-        {% endif %}       
-    </div><!--header-->
-    <div>
-
-    {% if messages %}
-        {% for message in messages %}
-            <h3 style="color: red;">{{ message }}</h3>
-        {% endfor %}
-    {% endif %}
-
-    {% if request.user.is_superuser %}
-    <a href="{% url 'cadastrar-criatura' %}"><button>Cadastrar criatura</button></a>
-    <a href="{% url 'cadastrar-monstro' %}"><button>Cadastrar monstro</button></a>
-    <a href="{% url 'cadastrar-personagem' %}"><button>Cadastrar personagem</button></a>
-    {% endif %}
-    <br>
-    <a href="{% url 'criaturas-cadastradas' %}"><button>Criaturas cadastradas</button></a>
-    <a href="{% url 'monstros-cadastrados' %}"><button>Monstros cadastrados</button></a>
-    <a href="{% url 'personagens-cadastrados' %}"><button>Personagens cadastrados</button></a>
->>>>>>> 63b27754e9d0e631015823281da42477661902f3
     </div>
+        {% else %}
+            <a href="{% url 'login' %}" class="nav-link text-white" style = "margin-top: 10px;">
+                <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                Login
+            </a>
+            {% endif %}
+        </a>
+    </li>
 </body>
 </html>
