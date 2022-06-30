@@ -1,32 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        {% load static %}
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Registrar Usuario</title>
-        <link href="css/style.css" type="text/css" rel="stylesheet" />
+        <link href='{% static "style.css" %}' type="text/css" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}">
+        <script src="{% static 'js/bootstrap.min.js' %}"></script> 
     </head>
     <body>
-        <div class="header">
-            <div class="center">
-                <img src="images/logo.png"/>
-            </div><!--center-->
-        </div><!--header-->
-        <h1>Registar novo usuário</h1>
-        <form action="#" method="POST">
-            {% csrf_token %}
-            <label for="id_nome">Nome:</label>
-            {{ form.nome}}
-            <label for="id_password">Senha:</label>
-            {{ form.password }}
-            <label for="id_campanha">Campanha:</label>
-            {{ form.campanha }}
-            <label for="id_email">Email:</label>
-            {{ form.email }}
-            <input type="submit" value="Registar">
-        </form>
-
-        <p>Já tem conta? <a href="{% url 'login' %}">Clique aqui para entrar!</a></p>
+        <section class="vh-100 gradient-custom">
+            <div class="container py-5 h-100">
+                <div class="row justify-content-center align-items-center h-100">
+                    <div class="col-12 col-lg-9 col-xl-7">
+                        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                            <div class="card-body p-4 p-md-5">
+                                <div class="formlogin">
+                                    <a href="{% url 'painel' %}"><img href="{% url 'painel' %}"src='{%static "images/Omni Codex (dice).png" %}'style="width:240px;height:150px;margin-top: -60px;margin-left: 150px;"></a>
+                                    <h1 class="fw-bold mb-2 text-uppercase">Registar novo usuário</h1>
+                                    <form action="#" method="POST">
+                                        {% csrf_token %}
+                                        <label class ="id_nome" for="id_nome">Nome:</label>
+                                        {{ form.nome}}
+                                        <label for="id_password">Senha:</label>
+                                        {{ form.password }}
+                                        <label for="id_campanha">Campanha:</label>
+                                        {{ form.campanha }}
+                                        <label for="id_email">Email:</label>
+                                        {{ form.email }}
+                                        <input type="submit" value="Registar">
+                                    </form>
+                                    <p>Já tem conta? <a href="{% url 'login' %}">Clique aqui para entrar!</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </body>
 </html>
