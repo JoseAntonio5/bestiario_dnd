@@ -14,3 +14,8 @@ btn.addEventListener('click', () => {
     display_vida.innerText = vidaMonstro(vida_min, vida_max)
     console.log(vidaMonstro(vida_min, vida_max))
 });
+
+$(document).ready(function () {
+    $('#dtBasicExample').DataTable();
+    $('.dataTables_length').addClass('bs-select');
+  });

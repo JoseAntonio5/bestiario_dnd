@@ -1,24 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personagens cadastrados</title>
-    <link href="css/style.css" type="text/css" rel="stylesheet" />
-</head>
-<body>
-    <h1>Personagens cadastradas</h1>
-
-    <ul>
-        {% for personagem in personagens %}
-            <li>
-                {{ personagem.nickname.nickname }}<br>
-                <a href="{{ personagem.id }}">Mais informações</a>
-            </li>
-        {% endfor %}
-    </ul>
-
-    <a href="{% url 'painel' %}">Voltar</a>
-</body>
-</html>
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Personagens cadastrados</title>
+        <link href='{% static "style.css" %}' type="text/css" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}">
+        <script src="{% static 'js/bootstrap.min.js' %}"></script> 
+    </head>
+    <body>
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                            <th class="th-sm"><h1>Personagens cadastrados</h1></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <ul>
+                                        {% for personagem in personagens %}
+                                            <li>
+                                                {{ personagem.nickname.nickname }}<br>
+                                                <a href="{{ personagem.id }}">Mais informações</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    <a href="{% url 'painel' %}">Voltar</a>
+                                </tr>
+                            </tr>
+                        </tfoot>
+                    </table> 
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
