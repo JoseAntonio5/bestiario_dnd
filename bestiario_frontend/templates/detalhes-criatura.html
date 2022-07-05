@@ -10,14 +10,21 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}">
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <style>
+        body {
+          background-image: url('{%static "images/fundo.jpg" %}');
+          width: 100%;
+          height: 100%;
+        }
+        </style>
 </head>
 <body>
     <section class="vh-100">
         <section class = "Detalhes"></section>
         <div class="container py-5 h-100">
             <h1>{{ criatura.nickname }}</h1>
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                
+            <div class="row d-flex justify-content-center align-items-center h-100"> 
                 <h2>Detalhes:</h2>
                 <ul>
                     <li><b>Atributos:</b> {{ criatura.atributos }}</li>
@@ -29,16 +36,15 @@
                     <li><b>Ações:</b> {{ criatura.acoes }}</li>
                     <li><b>Magias:</b> {{ criatura.magias }}</li>
                 </ul>
-
-                {% if request.user.is_superuser %}
-                    <a href="/editar-criatura/{{ criatura.id }}">Editar</a>
-                    <a href="/remover-criatura/{{ criatura.id }}">Remover</a>
-                {% endif %}
-                <br>
-                <a href="{% url 'painel' %}">Voltar</a>
+                <div>
+                    {% if request.user.is_superuser %}
+                        <a href="/editar-criatura/{{ criatura.id }}" style="margin-right: 20px;font-size: 25px;">Editar</a>
+                        <a href="/remover-criatura/{{ criatura.id }}" style="margin-right: 20px;font-size: 25px;">Remover</a>
+                    {% endif %}
+                    <a href="{% url 'painel' %}" style = "font-size: 25px;">Voltar</a>
+                </div>
             </div>
         </div>
     </section>
-    
 </body>
 </html>

@@ -1,32 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ personagem.nickname.nickname }}</title>
-    <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <link href='{% static "style.css" %}' type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <style>
+        body {
+          background-image: url('{%static "images/fundo.jpg" %}');
+          width: 100%;
+          height: 100%;
+        }
+
+        li{
+            font-size: 20px;
+        }
+    </style>
+
 </head>
 <body>
-    <h1>{{ personagem.nickname.nickname }}</h1>
-
-    <h2>Detalhes:</h2>
-    <ul>
-        <li><b>Nome:</b> {{ personagem.nome }}</li>
-        <li><b>Nível:</b> {{ personagem.nivel }}</li>
-        <li><b>Armas:</b> {{ personagem.armas }}</li>
-        <li><b>Talento:</b> {{ personagem.talento }}</li>
-        <li><b>Mochila:</b> {{ personagem.mochila }}</li>
-        <li><b>classe:</b> {{ personagem.classe }}</li>
-    </ul>
-    <br>
-
-    {% if request.user.is_superuser %}
-        <a href="/editar-personagem/{{ personagem.id }}">Editar</a>
-        <a href="/remover-personagem/{{ personagem.id }}">Remover</a>
-    {% endif %}
-    <br>
-
-    <a href="{% url 'painel' %}">Voltar</a>
+    <section class="vh-100">
+        <section class = "Detalhes"></section>
+        <div class="container py-5 h-100">
+            <h1>{{ criatura.nickname }}</h1>
+            <div class="justify-content-center align-items-center h-100">
+                <h2>Detalhes:</h2>
+                    <ul style = "margin-top: 20px;">
+                        <li><b>Nome:</b> {{ personagem.nome }}</li>
+                        <li><b>Nível:</b> {{ personagem.nivel }}</li>
+                        <li><b>Armas:</b> {{ personagem.armas }}</li>
+                        <li><b>Talento:</b> {{ personagem.talento }}</li>
+                        <li><b>Mochila:</b> {{ personagem.mochila }}</li>
+                        <li><b>classe:</b> {{ personagem.classe }}</li>
+                    </ul>
+                    <br>
+                {% if request.user.is_superuser %}
+                    <a href="/editar-criatura/{{ criatura.id }}" style="margin-right: 20px;font-size: 25px;">Editar</a>
+                    <a href="/remover-criatura/{{ criatura.id }}" style="margin-right: 20px;font-size: 25px;">Remover</a>
+                {% endif %}
+                <a href="{% url 'painel' %}" style = "font-size: 25px;">Voltar</a>
+            </div>
+        </div>
+    </section> 
 </body>
 </html>

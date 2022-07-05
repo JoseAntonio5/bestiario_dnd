@@ -1,38 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ monstro.nickname.nickname }}</title>
-    <link href="css/style.css" type="text/css" rel="stylesheet" />
-    {% load static %}
+    <link href='{% static "style.css" %}' type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <style>
+        body {
+          background-image: url('{%static "images/fundo.jpg" %}');
+          width: 100%;
+          height: 100%;
+        }
+    </style>
+
 </head>
 <body>
-    <h1>{{ monstro.nickname.nickname }}</h1>
-
-    <h2>Detalhes:</h2>
-    <ul>
-        <li><b>Tipo:</b> {{ monstro.tipo }}</li>
-        <li><b>Nível de dificuldade:</b> {{ monstro.nivel_dificuldade }}</li>
-        <li><b>Vida mínima: </b><span id="vida_min">{{ monstro.vida_min }}</span></li>
-        <li><b>Vida máxima: </b><span id="vida_max">{{ monstro.vida_max }}</span></li>
-        <li><b>Vida:</b> <span id="display_vida"></span></li>
-    </ul>
-    <br>
-    <button id="display_vida_btn">Calcular vida</button>
-    <br>
-
-    <img src="{{ monstro.imagem_url }}" alt="Imagem monstro" style="width: 200px;">
-    <br>
-
-    {% if request.user.is_superuser %}
-        <a href="/editar-monstro/{{ monstro.id }}">Editar</a>
-        <a href="/remover-monstro/{{ monstro.id }}">Remover</a>
-    {% endif %}
-    <br>
-
-    <a href="{% url 'painel' %}">Voltar</a>
-    <script src="{% static 'script.js' %}"></script>
+    <section class="vh-100">
+        <section class = "Detalhes"></section>
+        <div class="container py-5 h-100">
+            <h1>{{ monstro.nickname.nickname }}</h1>
+            <div class="justify-content-center align-items-center h-100">
+                <h2>Detalhes:</h2>
+                <br>
+                <ul>
+                    <li><b>Tipo:</b> {{ monstro.tipo }}</li>
+                    <li><b>Nível de dificuldade:</b> {{ monstro.nivel_dificuldade }}</li>
+                    <li><b>Vida mínima: </b><span id="vida_min">{{ monstro.vida_min }}</span></li>
+                    <li><b>Vida máxima: </b><span id="vida_max">{{ monstro.vida_max }}</span></li>
+                    <li><b>Vida:</b> <span id="display_vida"></span></li>
+                </ul>
+                
+                <br>
+                <button id="display_vida_btn">Calcular vida</button>
+                <br>
+            
+                <img src="{{ monstro.imagem_url }}" alt="Imagem monstro" style="width: 200px;margin-top: 30px;margin-bottom: 20px;">
+                <br>
+                {% if request.user.is_superuser %}
+                    <a href="/editar-criatura/{{ criatura.id }}" style="margin-right: 20px;font-size: 25px;">Editar</a>
+                    <a href="/remover-criatura/{{ criatura.id }}" style="margin-right: 20px;font-size: 25px;">Remover</a>
+                {% endif %}
+                <a href="{% url 'painel' %}" style = "font-size: 25px;">Voltar</a>
+            </div>
+        </div>
+    </section> 
 </body>
 </html>

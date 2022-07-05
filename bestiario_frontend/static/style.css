@@ -158,6 +158,7 @@ html,body{
 }
 
 .Detalhes{
+    background-color: yellow;
     background-image: url("images/fundo.jpg");
 }
 
