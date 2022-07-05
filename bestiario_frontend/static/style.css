@@ -157,6 +157,10 @@ html,body{
     background: #6a11cb;
 }
 
+.Detalhes{
+    background-image: url("images/fundo.jpg");
+}
+
 .painel{
     margin: 0;
     height: 100%;

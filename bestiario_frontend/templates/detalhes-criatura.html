@@ -1,32 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ criatura.nickname }}</title>
-    <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <link href='{% static "style.css" %}' type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fa/css/all.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </head>
 <body>
-    <h1>{{ criatura.nickname }}</h1>
+    <section class="vh-100">
+        <section class = "Detalhes"></section>
+        <div class="container py-5 h-100">
+            <h1>{{ criatura.nickname }}</h1>
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                
+                <h2>Detalhes:</h2>
+                <ul>
+                    <li><b>Atributos:</b> {{ criatura.atributos }}</li>
+                    <li><b>Tamanho:</b> {{ criatura.tamanho }}</li>
+                    <li><b>Alinhamento:</b> {{ criatura.alinhamento }}</li>
+                    <li><b>Conhecimento:</b> {{ criatura.conhecimento }}</li>
+                    <li><b>Resistência:</b> {{ criatura.resistencia }}</li>
+                    <li><b>Status de combate:</b> {{ criatura.status_combate }}</li>
+                    <li><b>Ações:</b> {{ criatura.acoes }}</li>
+                    <li><b>Magias:</b> {{ criatura.magias }}</li>
+                </ul>
 
-    <h2>Detalhes:</h2>
-    <ul>
-        <li><b>Atributos:</b> {{ criatura.atributos }}</li>
-        <li><b>Tamanho:</b> {{ criatura.tamanho }}</li>
-        <li><b>Alinhamento:</b> {{ criatura.alinhamento }}</li>
-        <li><b>Conhecimento:</b> {{ criatura.conhecimento }}</li>
-        <li><b>Resistência:</b> {{ criatura.resistencia }}</li>
-        <li><b>Status de combate:</b> {{ criatura.status_combate }}</li>
-        <li><b>Ações:</b> {{ criatura.acoes }}</li>
-        <li><b>Magias:</b> {{ criatura.magias }}</li>
-    </ul>
-
-    {% if request.user.is_superuser %}
-        <a href="/editar-criatura/{{ criatura.id }}">Editar</a>
-        <a href="/remover-criatura/{{ criatura.id }}">Remover</a>
-    {% endif %}
-    <br>
-    <a href="{% url 'painel' %}">Voltar</a>
+                {% if request.user.is_superuser %}
+                    <a href="/editar-criatura/{{ criatura.id }}">Editar</a>
+                    <a href="/remover-criatura/{{ criatura.id }}">Remover</a>
+                {% endif %}
+                <br>
+                <a href="{% url 'painel' %}">Voltar</a>
+            </div>
+        </div>
+    </section>
+    
 </body>
 </html>
